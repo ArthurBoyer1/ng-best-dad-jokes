@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { postsMock } from '../data/posts.mock';
+// import { postsMock } from '../data/posts.mock';
 import { Post } from '../models/post.interface';
+import { GetDataService } from '../services/get-data.service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,17 @@ import { Post } from '../models/post.interface';
 })
 export class HomeComponent implements OnInit {
   title = 'ng-best-dad-jokes';
-  posts: Post[] = postsMock
+  posts: Post[] = [];
+  isLoading : boolean = false;
 
-  constructor() { }
+  constructor(private getDataService: GetDataService) { }
 
   ngOnInit(): void {
-
+    this.isLoading = true;
+    this.getDataService.getData().subscribe(res => {
+      this.posts = res;
+      this.isLoading = false;
+    })
   }
 
 }
