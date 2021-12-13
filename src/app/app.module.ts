@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CurrentJokePipe } from './pipes/current-joke.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    CurrentJokePipe
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   exports: [
-    HttpClientModule
+    HttpClientModule,
+    CurrentJokePipe
   ],
   providers: [],
   bootstrap: [AppComponent]

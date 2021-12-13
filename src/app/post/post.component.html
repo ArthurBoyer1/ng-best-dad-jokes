@@ -10,8 +10,8 @@
     <h3>Jokes you might enjoy</h3>
     <div class="card-container card-container--list">
       <button
-        *ngFor="let post of posts"
-        [routerLink]="['/post', post.id]"
+        *ngFor="let post of posts | currentJoke: id"
+        [routerLink]="['/post', post.id]" 
         class="card card-small"
       >
         <span>{{ post.title }}</span>
